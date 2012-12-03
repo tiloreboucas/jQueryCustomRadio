@@ -19,7 +19,13 @@
                 'false': null,
                 'active': null
             },
-            'content': null
+            'content': null,
+            'onTrue': function(){
+                $.noop();
+            },
+            'onFalse': function(){
+                $.noop();
+            }
         };
 
         var methods = {
@@ -65,10 +71,12 @@
                     $this.attr.content.removeClass('true').addClass('false');
                     $this.attr.buttons.true.removeAttr('checked');
                     $this.attr.buttons.false.attr('checked', 'checked');
+                    $this.attr.onFalse();
                 } else {
                     $this.attr.content.removeClass('false').addClass('true');
                     $this.attr.buttons.false.removeAttr('checked');
                     $this.attr.buttons.true.attr('checked', 'checked');    
+                    $this.attr.onTrue();
                 }
             }
         };

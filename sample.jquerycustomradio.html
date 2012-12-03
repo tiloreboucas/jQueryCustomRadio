@@ -29,7 +29,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.customradio').customradio();
+		$('.customradio').customradio({
+			'onTrue': function(){
+				console.log('true');
+			},
+			'onFalse': function(){
+				console.log('false');
+			}
+		});
 	});
 </script>
 </html>
