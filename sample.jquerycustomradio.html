@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.customradio.js"></script>
+	<link rel="stylesheet" href="jquery.customradio.css" />
+	<style type="text/css">
+		.customradio {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<fieldset>
+		<legend>Iniciar CustomRadio</legend>
+			<div class="customradio">
+				<input type="radio" name="radio1" value="true" />
+				<input type="radio" checked="checked" name="radio1" value="false" />
+			</div>
+
+			<div class="customradio">
+				<input type="radio" checked="checked" name="radio2" value="true" />
+				<input type="radio" name="radio2" value="false" />
+			</div>
+	</fieldset>
+</body>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.customradio').customradio();
+	});
+</script>
+</html>
