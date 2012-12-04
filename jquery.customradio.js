@@ -50,7 +50,7 @@
                 $this.attr.content.append($this.attr.buttons.true);
                 $this.attr.content.append($this.attr.buttons.false);
                 
-                $this.attr.content.append("<div class='customradio_button'></div>");
+                $this.attr.content.append("<div class='customradio_button_content'><div class='customradio_button'><div class='areaOn'></div><div class='button_active'></div><div class='areaOff'></div></div></div>");
                 $this.attr.buttons.active = $this.attr.target.find(".customradio_button");
 
                 if($this.attr.buttons.true[0].checked) {
@@ -61,6 +61,25 @@
 
                 $this.attr.content.click(function(){
                     methods.changeState.call($this);    
+                });
+
+                $this.attr.buttons.active.draggable({ 
+                    axis: "x",
+                    containment: "parent",
+                    stop: function(e) {
+                        $this.attr.buttons.active.removeAttr("style");
+                        if(e.clientX < 50) {
+                            $this.attr.content.removeClass('true').addClass('false');
+                            $this.attr.buttons.true.removeAttr('checked');
+                            $this.attr.buttons.false.attr('checked', 'checked');
+                            $this.attr.onFalse();
+                        } else {
+                            $this.attr.content.removeClass('false').addClass('true');
+                            $this.attr.buttons.false.removeAttr('checked');
+                            $this.attr.buttons.true.attr('checked', 'checked');    
+                            $this.attr.onTrue();    
+                        }
+                    }
                 });
             },
 
