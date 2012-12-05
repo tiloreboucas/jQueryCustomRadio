@@ -67,13 +67,14 @@
                     axis: "x",
                     containment: "parent",
                     stop: function(e) {
-                        $this.attr.buttons.active.removeAttr("style");
-                        if(e.clientX < 50) {
+                        if(parseInt($this.attr.buttons.active.css("left")) < 13) {
+                            $this.attr.buttons.active.removeAttr("style");
                             $this.attr.content.removeClass('true').addClass('false');
                             $this.attr.buttons.true.removeAttr('checked');
                             $this.attr.buttons.false.attr('checked', 'checked');
                             $this.attr.onFalse();
                         } else {
+                            $this.attr.buttons.active.removeAttr("style");
                             $this.attr.content.removeClass('false').addClass('true');
                             $this.attr.buttons.false.removeAttr('checked');
                             $this.attr.buttons.true.attr('checked', 'checked');    
