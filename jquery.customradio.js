@@ -53,11 +53,10 @@
                 $this.attr.content.append("<div class='customradio_button_content'><div class='customradio_button'><div class='areaOn'></div><div class='button_active'></div><div class='areaOff'></div></div></div>");
                 $this.attr.buttons.active = $this.attr.target.find(".customradio_button");
 
-                if($this.attr.buttons.true[0].checked) {
-                    $this.attr.content.addClass('true');    
-                } else {
-                    $this.attr.content.addClass('false'); 
-                }
+                if($this.attr.buttons.true[0].checked)
+                    $this.attr.content.addClass('true');
+                else
+                    $this.attr.content.addClass('false');
 
                 $this.attr.content.click(function(){
                     methods.changeState.call($this);    
@@ -82,6 +81,10 @@
                         }
                     }
                 });
+
+                if($this.attr.target.attr("readonly")){
+                    methods.toReadOnly.call($this);
+                }
             },
 
             changeState: function(){
@@ -98,6 +101,27 @@
                     $this.attr.buttons.true.attr('checked', 'checked');    
                     $this.attr.onTrue();
                 }
+            },
+
+            toReadOnly: function(){
+                var $this = this;
+
+                $this.attr.content.addClass("readonly");
+                $this.attr.content.unbind("click");
+                $this.attr.buttons.active.draggable("disable");
+            },
+
+            toReadAndWrite: function(){
+                var $this = this;
+
+                $this.attr.content.removeClass("readonly");
+                $this.attr.target.removeAttr("readonly");
+                
+                $this.attr.content.click(function(){
+                    methods.changeState.call($this);    
+                });
+
+                $this.attr.buttons.active.draggable("enable");
             }
         };
 

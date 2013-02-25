@@ -63,3 +63,9 @@
 .customradio_content input[type="radio"] {
 	display: none;
 }
+
+/* ReadOnly */
+.customradio_content.readonly {	border: 1px solid #ddd; }
+
+.customradio_content.readonly .customradio_button .areaOn,
+.customradio_content.readonly .customradio_button .areaOff { background-color: #ddd; }
